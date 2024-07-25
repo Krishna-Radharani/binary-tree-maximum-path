@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int  function(TreeNode*root,int &maxi){
+    if(!root){
+            return 0;
+        }
+        int x=max(0,function(root->left,maxi));
+        int y=max(0,function(root->right,maxi));
+        maxi=max(maxi,x+y+root->val);
+        return max(x,y)+root->val;
+
+   }
+    int maxPathSum(TreeNode* root) {
+        if(!root){
+            return 0;
+        }
+        int maxi=INT_MIN;
+        function(root,maxi);
+        return maxi;
+
+        
+        
+    }
+};
